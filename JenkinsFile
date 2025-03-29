@@ -1,0 +1,53 @@
+pipeline {
+    agent any
+    environment {
+    RENDER_URL = 'https://gallery2025.onrender.com'
+        
+    }
+
+    stages {
+        stage('Cloning code') {
+            steps {
+                echo 'Cloning Code'
+                git branch: 'master', url: 'https://github.com/HottensiahNyanjui/gallery.git'
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                echo 'Installing Dependencies'
+                script {
+                    sh 'npm install'
+                }
+            }
+        }
+        
+        stage('Building code') {
+            steps {
+                echo 'Building code...'
+            }
+        }
+
+        stage('Deploy to Render') {
+            steps {
+                echo 'Deloying On Render'
+                script {
+                    sh 'node server.js &'
+                }
+            }
+        }
+
+        stage('Push Changes') {
+            steps {
+                echo 'Pushing changes to Render'
+            }
+        }
+
+        stage('Verify Deployment') {
+            steps {
+                echo 'Verifying deployment...'
+            }
+        }
+    }
+
+}

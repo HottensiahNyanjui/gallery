@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment {
-    mongodb+srv://hottensiahnyanjui:HottieShiko2014!@ip1.lodkxp6.mongodb.net/darkroom?retryWrites=true&w=majority
     RENDER_URL = 'https://gallery2025.onrender.com'
         
     }
@@ -33,7 +32,7 @@ pipeline {
             steps {
                 echo 'Deloying On Render'
                 script {
-                    sh 'node server.js &'
+                    sh 'node server.js'
                 }
             }
         }

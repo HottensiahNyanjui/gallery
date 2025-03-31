@@ -9,7 +9,11 @@ pipeline {
         stage('Cloning code') {
             steps {
                 echo 'Cloning Code'
+<<<<<<< HEAD
                 git branch: 'master', url: 'https://github.com/HottensiahNyanjui/gallery.git'
+=======
+                git branch: 'test', url: 'https://github.com/HottensiahNyanjui/gallery/tree/test'
+>>>>>>> test
             }
         }
         
@@ -21,10 +25,28 @@ pipeline {
                 }
             }
         }
+<<<<<<< HEAD
+=======
+         stage('Run Tests') {
+            steps {
+                script {
+                        sh 'npm test'
+
+                         
+                }
+            }  
+         }              
+>>>>>>> test
         
         stage('Building code') {
             steps {
                 echo 'Building code...'
+<<<<<<< HEAD
+=======
+                
+                }
+                
+>>>>>>> test
             }
         }
 

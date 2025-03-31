@@ -1,19 +1,17 @@
 pipeline {
     agent any
     environment {
-    RENDER_URL = 'https://gallery2025.onrender.com'
-        
+        RENDER_URL = 'https://gallery2025.onrender.com'
     }
 
     stages {
         stage('Cloning code') {
             steps {
                 echo 'Cloning Code'
-                git branch: 'master', url: 'https://github.com/HottensiahNyanjui/gallery.git'
-                git branch: 'test', url: 'https://github.com/HottensiahNyanjui/gallery/tree/test'
+                git branch: 'test', url: 'https://github.com/HottensiahNyanjui/gallery.git'
             }
         }
-        
+
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Dependencies'
@@ -22,24 +20,22 @@ pipeline {
                 }
             }
         }
-         stage('Run Tests') {
-             steps {
 
+        stage('Run Tests') {
+            steps {
                 script {
                     try {
-                sh 'npm test'
-
-               }catch (Exception e) {
-                mail to: 'hottensiahnyanjui@gmail.com',
-                     subject: 'Build Failed: Tests Failed',
-                     body: "Tests failed."
-                error "Tests failed"
-
+                        sh 'npm test'
+                    } catch (Exception e) {
+                        mail to: 'hottensiahnyanjui@gmail.com',
+                            subject: 'Build Failed: Tests Failed',
+                            body: "Tests failed."
+                        error "Tests failed"
+                    }
+                }
+            }
         }
-                }
-                }
-         }              
-        
+
         stage('Building code') {
             steps {
                 echo 'Building code...'
@@ -48,7 +44,7 @@ pipeline {
 
         stage('Deploy to Render') {
             steps {
-                echo 'Deloying On Render'
+                echo 'Deploying on Render'
                 script {
                     sh 'node server.js'
                 }
@@ -67,5 +63,4 @@ pipeline {
             }
         }
     }
-
-
+}

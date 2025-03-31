@@ -1,6 +1,7 @@
 pipeline {
     agent any
     environment {
+        PORT = '5000'
         RENDER_URL = 'https://gallery2025.onrender.com'
     }
 

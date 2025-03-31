@@ -43,9 +43,6 @@ pipeline {
         stage('Building code') {
             steps {
                 echo 'Building code...'
-                
-                }
-                
             }
         }
 

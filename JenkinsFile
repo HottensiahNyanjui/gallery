@@ -9,7 +9,7 @@ pipeline {
         stage('Cloning code') {
             steps {
                 echo 'Cloning Code'
-                git branch: 'master', url: 'https://github.com/HottensiahNyanjui/gallery.git'
+                git branch: 'test', url: 'https://github.com/HottensiahNyanjui/gallery/tree/test'
             }
         }
         
@@ -34,6 +34,9 @@ pipeline {
         stage('Building code') {
             steps {
                 echo 'Building code...'
+                
+                }
+                
             }
         }
 

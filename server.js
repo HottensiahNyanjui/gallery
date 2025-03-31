@@ -9,7 +9,7 @@ const path = require('path');
 let index = require('./routes/index');
 let image = require('./routes/image');
 
-const mongodb_url = process.env.MONGODB_URI || 
+const mongodb_url = process.env.MONGODB_URI || 'mongodb://localhost:27017/darkroom';
 
 // connecting the database
 mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
